@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inicio de Sesión</title>
+
+    <!-- Animate.css -->
+    <link href="{% static 'css/estilo_login.css' %}" rel="stylesheet">
+</head>
+<body>
+    
+    <div class ="row">
+        <div class="col-md-6 mx-auto p-0">
+            <div class="card">
+    <div class="login-box">
+        <div class="login-snip">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Iniciar Sesión</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarte</label>
+            <div class="login-space">
+                <div class="login">
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        <input type="text" class="input"  placeholder="Ingresa tu username">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Contraseña</label>
+                        <input type="password" class="input" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Iniciar Sesión">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot">
+                    </div>
+                </div>
+                <form action="POST">
+                    {% csrf_token %}
+                    <div class="sign-up-form">
+                        <div class="group">
+                            <label for="user" class="label">Username</label>
+                            <input type="text" class="input" placeholder="Crea tu nombre de usuario" required="" name="username">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Correo Electrónico</label>
+                            <input type="email" class="input" placeholder="Email" required="" name="email">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Contraseña</label>
+                            <input type="password" class="input" placeholder="Crea tu contraseña" required="" name="password">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Repetir Contraseña</label>
+                            <input type="password" class="input" placeholder="Repite tu contraseña" name="repassword" >
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Registrar">
+                        </div>
+                        
+                        <div class="hr"></div>
+                        <div class="foot">
+                            <label for="tab-1">Cancelar</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>   
+    </div>
+    </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: servicio_social
+    #restart: always
+    depends_on:
+      - db-ss
+    ports:
+      - 8000:8000
+      # - 80:80
+    volumes: 
+      - ./ProyectoServicioSocial/:/app
+
+  db-ss:
+    image: mariadb
+    container_name: serviciosocial-db
+    #restart: always
+    environment:
+      MYSQL_DATABASE: servicio_social
+      MYSQL_USER: user_ss
+      MYSQL_PASSWORD: "admin1234"
+      MYSQL_ROOT_PASSWORD: admin1234
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - 3310:3306
+ 
+volumes:
+  db:    
