@@ -1,0 +1,16 @@
+{% extends 'base2.html' %}
+
+{% block titulo %}
+Eliminar unidad
+{% endblock titulo %}
+
+{% block contenido %}
+    <form method="post">
+        {% csrf_token %}
+        <p>¿Estás seguro de querer eliminar la unidad {{object.nombre}}?</p>
+        {{form}}
+        <a class="btn btn-warning" href="{% url 'lista_unidades' %}">Cancelar</a>
+        <button  class="btn btn-danger" type="submit">Eliminar</button>
+        
+    </form>
+{% endblock contenido %}
