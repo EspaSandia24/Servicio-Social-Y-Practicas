@@ -11,10 +11,6 @@
     <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
 </form>
 
-<a class="btn btn-lg btn-outline-success" href="{% url 'nuevo_alumno' %}">
-    Nuevo
-</a>
-
 <table class="table">
     <thead>
         <tr>
@@ -40,10 +36,10 @@
             <td>{{alumnos.fecha_nac}}</td>
             {# <td>{{alumnos.user}}</td> #}
             <td>
-                <a class="btn btn-sm btn-primary" href="{% url 'editar_alumno' alumno.matricula %}">
+                <a class="btn btn-sm btn-primary" href="{% url 'editar_alumno' alumnos.matricula %}">
                     Editar
                 </a>
-                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_alumno' alumno.matricula %}">
+                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_alumno' alumnos.matricula %}">
                     Eliminar
                 </a>
             </td>
@@ -52,6 +48,10 @@
 
     </tbody>
 </table>
+
+<a class="btn btn-lg btn-outline-success" href="{% url 'nuevo_alumno' %}">
+    Nuevo
+</a>
 
 <div class="pagination">
     <span class="step-links">
