@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    Lista de Reportes Mensuales
+{% endblock titulo %}
+
+{% block contenido %}
+<h1>Lista de Reportes Mensuales</h1>
+
+<form method="GET" id="form">
+    <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+</form>
+
+<a class="btn btn-lg btn-outline-success" href="{% url 'nuevo_reporteM' %}">
+    Nuevo
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>Alumno</th>
+            <th>Tipo</th>
+            <th>horas Reportadas</th>
+            <th>Fecha inicio</th>
+            <th>Fecha termino</th>
+
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        {% csrf_token %}
+        {% for menusal in object_list %}
+        <tr>
+            
+            <td>{{menusal.alumno}}</td>
+            <td>{{menusal.tipo}}</td>
+            <td>{{menusal.horas_Reportadas}}</td>
+            <td>{{menusal.fecha_inicio}}</td>
+            <td>{{menusal.fecha_termino}}</td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="{% url 'editar_reporteM' menusal.id %}">
+                    Editar
+                </a>
+                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_reporteM' menusal.id %}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="javascript:enviar(1);">&laquo; first</a>
+            <a href="javascript:enviar({{ page_obj.previous_page_number }});">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="javascript:enviar({{ page_obj.next_page_number }});">next</a>
+            <a href="javascript:enviar({{ page_obj.paginator.num_pages }});">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock contenido %}
+
+{% block scripts %}
+    <script>
+        function enviar(page){
+            $("#page").val(page);
+            $("#form").submit();
+        }
+    </script>
+{% endblock scripts %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block titulo %}
+Eliminar Reporte
+{% endblock titulo %}
+
+{% block contenido %}
+    <form method="post">
+        {% csrf_token %}
+        <p>¿Estás seguro de querer eliminar el Reporte {{object.id}}?</p>
+        {{form}}
+        <button  class="btn btn-danger" type="submit">Eliminar</button>
+        <a class="btn btn-warning" href="{% url 'lista_reportesM' %}">Cancelar</a>
+    </form>
+{% endblock contenido %}
