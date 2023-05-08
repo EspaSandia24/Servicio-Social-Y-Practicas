@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    Lista de Reportes Iniciales
+{% endblock titulo %}
+
+{% block contenido %}
+<h1>Lista de Reportes Iniciales</h1>
+
+<form method="GET" id="form">
+    <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+</form>
+
+<a class="btn btn-lg btn-outline-success" href="{% url 'nuevo_reporteI' %}">
+    Nuevo
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>Alumno</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        {% csrf_token %}
+        {% for inicial in object_list %}
+        <tr>
+            
+            <td>{{inicial.alumno}}</td>
+            <td>{{inicial.tipo}}</td>
+            <td>{{inicial.fecha}}</td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="{% url 'editar_reporteI' inicial.id %}">
+                    Editar
+                </a>
+                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_reporteI' inicial.id %}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="javascript:enviar(1);">&laquo; first</a>
+            <a href="javascript:enviar({{ page_obj.previous_page_number }});">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="javascript:enviar({{ page_obj.next_page_number }});">next</a>
+            <a href="javascript:enviar({{ page_obj.paginator.num_pages }});">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock contenido %}
+
+{% block scripts %}
+    <script>
+        function enviar(page){
+            $("#page").val(page);
+            $("#form").submit();
+        }
+    </script>
+{% endblock scripts %}

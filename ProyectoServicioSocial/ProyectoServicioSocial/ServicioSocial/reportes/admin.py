@@ -1,3 +1,6 @@
 from django.contrib import admin
+from reportes.models import ReporteInicial,ReporteMensual
 
-# Register your models here.
+admin.site.register(ReporteInicial)
+admin.site.register(ReporteMensual)
+

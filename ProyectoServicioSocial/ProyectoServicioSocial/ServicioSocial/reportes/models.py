@@ -28,7 +28,7 @@ class ReporteMensual(models.Model):
     alumno = models.ForeignKey("alumnos.Alumnos", verbose_name='Alumno', on_delete=models.DO_NOTHING)
     tipo = models.CharField(max_length=2, choices=TIPO)
     actividades = models.CharField( max_length=300)
-    horas_Reportadas = models.IntegerField(default=0,max_length=80)
+    horas_Reportadas = models.IntegerField(default=00)
     fecha_inicio = models.DateField('Fecha de inicio', max_length=10)
     fecha_termino = models.DateField('Fecha de termino', max_length=10)
     fecha = models.DateField('Fecha de entrega', max_length=10)
