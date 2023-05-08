@@ -8,6 +8,6 @@ urlpatterns = [
     path('unidades/', include('instituciones.urls_unidades')),
     path('reportes/', include('reportes.urls')),
     path('instituciones/', include('instituciones.urls_instituciones')),
-    
+    path('alumnos/', include('alumnos.urls')),
     
 ]

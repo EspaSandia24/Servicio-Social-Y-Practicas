@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Lista de Alumnos
+{% endblock titulo %}
+
+{% block contenido %}
+<h1>Lista de Alumnos</h1>
+
+<form method="GET" id="form">
+    <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+</form>
+
+<a class="btn btn-lg btn-outline-success" href="{% url 'nuevo_alumno' %}">
+    Nuevo
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>Matrícula</th>
+            <th>Nombre(s)</th>
+            <th>Apellido paterno</th>
+            <th>Apellido Materno</th>
+            <th>Fecha de nacimiento</th>
+            {# <th>User</th> #}
+
+        </tr>
+    </thead>
+    <tbody>
+        {% csrf_token %}
+        {% for alumnos in object_list %}
+        <tr>
+            
+            <td>{{alumnos.matricula}}</td>
+            <td>{{alumnos.nombre}}</td>
+            <td>{{alumnos.ap_paterno}}</td>
+            <td>{{alumnos.ap_materno}}</td>
+            <td>{{alumnos.fecha_nac}}</td>
+            {# <td>{{alumnos.user}}</td> #}
+            <td>
+                <a class="btn btn-sm btn-primary" href="{% url 'editar_alumno' alumno.matricula %}">
+                    Editar
+                </a>
+                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_alumno' alumno.matricula %}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="javascript:enviar(1);">&laquo; first</a>
+            <a href="javascript:enviar({{ page_obj.previous_page_number }});">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="javascript:enviar({{ page_obj.next_page_number }});">next</a>
+            <a href="javascript:enviar({{ page_obj.paginator.num_pages }});">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock contenido %}
+
+{% block scripts %}
+    <script>
+        function enviar(page){
+            $("#page").val(page);
+            $("#form").submit();
+        }
+    </script>
+{% endblock scripts %}
