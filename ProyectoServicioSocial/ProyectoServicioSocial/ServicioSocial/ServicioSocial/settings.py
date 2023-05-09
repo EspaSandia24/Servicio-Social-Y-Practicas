@@ -118,7 +118,7 @@ STATICFILES_DIRS = (
 
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
-LOGIN_REDIRECT_URL = reverse_lazy('lista_alumnos')
+LOGIN_REDIRECT_URL = reverse_lazy('bienvenida')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
