@@ -1,7 +1,7 @@
 from django.db import models
 
 class Alumnos(models.Model):
-    matricula = models.BigAutoField('Matrícula', primary_key=True)
+    matricula = models.CharField('Matrícula', max_length=8, primary_key=True)
     nombre = models.CharField('Nombre', max_length=50)
     ap_paterno = models.CharField('Apellido paterno', max_length=20)
     ap_materno = models.CharField('Apellido materno', max_length=20)

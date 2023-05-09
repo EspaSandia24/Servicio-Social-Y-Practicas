@@ -30,7 +30,7 @@ class FormAlumnos(forms.ModelForm):
                 attrs={'class':'form-control','placeholder':'Apellido materno'}
             ),
             'fecha_nac': forms.TextInput(
-                attrs={'class':'form-control','placeholder':'Fecha de nacimiento'}
+                attrs={'class':'form-control','placeholder':'dd/mm/aaaa'}
             ),
             #'user': forms.Select(
             #    attrs={'class':'form-control','placeholder':'User'}),
