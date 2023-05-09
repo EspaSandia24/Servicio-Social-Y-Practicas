@@ -10,17 +10,19 @@ from .models import ProgramaAcademico, UnidadAcademica, Institucion
 from .forms import FormProgramaAcademico, FormProgramaAcademicoEditar, FiltrosProgramaAcademico, FormUnidadAcademica, FormUnidadAcademicaEditar, FiltrosUnidadAcademica
 from .forms import FormInstitucion, FormInstitucionEditar, FiltrosInstitucion
 from django.core.paginator import Paginator
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 #instituciones------------------
 
-class ListaInstituciones(ListView):
+class ListaInstituciones(LoginRequiredMixin, ListView):
     template_name = 'instituciones_templates/institucion_list.html'
     paginate_by = 3
     model = Institucion
     extra_context = {'form': FiltrosInstitucion}
     page_kwarg = 'page'
 
-class NuevaInstitucion(CreateView):
+class NuevaInstitucion(LoginRequiredMixin, CreateView):
     template_name = 'instituciones_templates/institucion_form.html'
     model = Institucion
     form_class = FormInstitucion
@@ -28,21 +30,21 @@ class NuevaInstitucion(CreateView):
     success_url = reverse_lazy('lista_instituciones')
     extra_context = {'accion': 'Nueva'}
 
-class EditarInstitucion(UpdateView):
+class EditarInstitucion(LoginRequiredMixin, UpdateView):
     template_name = 'instituciones_templates/institucion_form.html'
     model = Institucion
     form_class = FormInstitucionEditar
     extra_context = {'accion': 'Editar'}
     success_url = reverse_lazy('lista_instituciones')
 
-class EliminarInstitucion(DeleteView):
+class EliminarInstitucion(LoginRequiredMixin, DeleteView):
     template_name = 'instituciones_templates/institucion_confirm_delete.html'
     model = Institucion
     success_url = reverse_lazy('lista_instituciones')
 
 #programas-------------------
 
-class ListaProgramas(ListView):
+class ListaProgramas(LoginRequiredMixin, ListView):
     template_name = 'programas_academicas/programaacademico_list.html'
     paginate_by = 3
     model = ProgramaAcademico
@@ -50,7 +52,7 @@ class ListaProgramas(ListView):
     page_kwarg = 'page'  
 
     
-class NuevaPrograma(CreateView):
+class NuevaPrograma(LoginRequiredMixin, CreateView):
     template_name = 'programas_academicas/programaacademico_form.html'
     model = ProgramaAcademico
     form_class = FormProgramaAcademico
@@ -59,14 +61,14 @@ class NuevaPrograma(CreateView):
     extra_context = {'accion': 'Nueva'}
     
     
-class EditarPrograma(UpdateView):
+class EditarPrograma(LoginRequiredMixin, UpdateView):
     template_name = 'programas_academicas/programaacademico_form.html'
     model = ProgramaAcademico
     form_class = FormProgramaAcademicoEditar
     extra_context = {'accion': 'Editar'}
     success_url = reverse_lazy('lista_programas')
 
-class EliminarPrograma(DeleteView):
+class EliminarPrograma(LoginRequiredMixin, DeleteView):
     template_name = 'programas_academicas/programaacademico_confirm_delete.html'
     model = ProgramaAcademico
     success_url = reverse_lazy('lista_programas')
@@ -75,7 +77,7 @@ class EliminarPrograma(DeleteView):
 
 
 #unidades------------
-class NuevaUnidad(CreateView):
+class NuevaUnidad(LoginRequiredMixin, CreateView):
     template_name = 'unidades_academicas/unidadacademica_form.html'
     model = UnidadAcademica
     form_class = FormUnidadAcademica
@@ -84,19 +86,19 @@ class NuevaUnidad(CreateView):
     extra_context = {'accion': 'Nueva'}
 
     
-class EditarUnidad(UpdateView):
+class EditarUnidad(LoginRequiredMixin, UpdateView):
     template_name = 'unidades_academicas/unidadacademica_form.html'
     model = UnidadAcademica
     form_class = FormUnidadAcademicaEditar
     extra_context = {'accion': 'Editar'}
     success_url = reverse_lazy('lista_unidades')
 
-class EliminarUnidad(DeleteView):
+class EliminarUnidad(LoginRequiredMixin, DeleteView):
     template_name = 'unidades_academicas/unidadacademica_confirm_delete.html'
     model = UnidadAcademica
     success_url = reverse_lazy('lista_unidades')
 
-class ListaUnidades(ListView):
+class ListaUnidades(LoginRequiredMixin, ListView):
     template_name = 'unidades_academicas/unidadacademica_list.html'
     paginate_by = 3
     model = UnidadAcademica

@@ -16,7 +16,7 @@ services:
       - ./ProyectoServicioSocial/:/app
 
   db-ss:
-    image: mariadb
+    image: mysql
     container_name: serviciosocial-db
     #restart: always
     environment:
