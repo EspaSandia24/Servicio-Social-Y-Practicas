@@ -1,0 +1,87 @@
+{% extends 'base3.html' %}
+
+{% block titulo %}
+    Datos de Alumnos
+{% endblock titulo %}
+
+{% block contenido %}
+<h1>Datos de Alumnos</h1>
+
+<form method="GET" id="form">
+    <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Alumno</th> 
+            <th>Institucion</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha de Termino</th>
+            <th>Kardex</th>
+            <th>Constancia de estudios</th>
+            <th>Carta de Aceptación</th>
+            <th>Carta de Liberación</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% csrf_token %}
+        {% for alumnos in object_list %}
+        <tr>
+            
+            <td>{{datos.matricula}}</td>
+            <td>{{datos.institucion}}</td>
+            <td>{{datos.fecha_inicio}}</td>
+            <td>{{datos.fecha_termino}}</td> 
+            <td>{{datos.kardex}}</td>
+            <td>{{datos.constancia_estudios}}</td>
+            <td>{{datos.carta_aceptacion}}</td>
+            <td>{{datos.carta_liberacion}}</td>
+ 
+            <td>
+                <a class="btn btn-sm btn-primary" href="{% url 'editar_datos' datos.matricula %}">
+                    Editar
+                </a>
+                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_datos' datos.matricula %}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<a class="btn btn-lg btn-outline-success" href="{% url 'nuevos_datos' %}">
+    Nuevo
+</a>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="javascript:enviar(1);">&laquo; first</a>
+            <a href="javascript:enviar({{ page_obj.previous_page_number }});">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="javascript:enviar({{ page_obj.next_page_number }});">next</a>
+            <a href="javascript:enviar({{ page_obj.paginator.num_pages }});">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock contenido %}
+
+{% block scripts %}
+    <script>
+        function enviar(page){
+            $("#page").val(page);
+            $("#form").submit();
+        }
+    </script>
+{% endblock scripts %}
