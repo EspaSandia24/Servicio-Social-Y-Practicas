@@ -9,13 +9,8 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
-        <button class="btn btn-primary" type="submit">
-           {% if accion == 'Nuevo' %}
-                Agregar
-            {% else %}
-                Guardar
-           {% endif %} 
-        </button>
+        <input type="submit" class="btn btn-success">
+        <a class="btn btn-danger" href="{% url 'bienvenida' %}">Cancelar</a>
     </form>
 
 {% endblock contenido %}

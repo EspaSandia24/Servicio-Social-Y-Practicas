@@ -2,12 +2,13 @@ from django.shortcuts import render , redirect
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import ReporteInicial
 from .models import ReporteInicial, ReporteMensual
 from django.urls import reverse_lazy
 from .forms import FormReporteIEditar,FormReporteMEditar
 
+
 class ListaReportesI(LoginRequiredMixin, ListView):
+
     template_name ='reporteinicial_list.html'
     paginate_by = 2
     model = ReporteInicial
@@ -31,8 +32,10 @@ class EditarReporteI(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('lista_reportesI')
     
 
+
 class EliminarReporteI(LoginRequiredMixin, DeleteView):
     template_name ='reporteinicial_comfirm_delete.html'
+
     model = ReporteInicial
     success_url = reverse_lazy('lista_reportesI')
 

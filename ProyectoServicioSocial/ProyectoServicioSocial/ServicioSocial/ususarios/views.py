@@ -6,6 +6,11 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from .forms import UserForm, FormDatosPersonales
 from .models import DatosPersonales
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+class PaginaInicio(LoginRequiredMixin, TemplateView):
+    template_name = 'bienvenida.html'
 
 class LoginView(LoginView):
     template_name = 'login.html'
