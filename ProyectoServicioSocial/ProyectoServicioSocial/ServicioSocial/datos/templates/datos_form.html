@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    {{accion}} Datos de Alumnos
+{% endblock titulo %}
+    
+{% block contenido %}
+    <h1>{{accion}} Datos de Alumnos</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary" type="submit">
+           {% if accion == 'Nuevos' %}
+                Agregar
+            {% else %}
+                Guardar
+           {% endif %} 
+        </button>
+    </form>
+
+{% endblock contenido %}

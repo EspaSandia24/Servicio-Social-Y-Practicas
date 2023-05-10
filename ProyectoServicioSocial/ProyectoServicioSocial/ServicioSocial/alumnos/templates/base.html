@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <title>
         {% block titulo %}
-            Alumnos
+            
         {% endblock titulo %}
     </title>
 </head>
 <body>
+<<<<<<< HEAD
         <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">IS</a>
@@ -46,16 +47,95 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'perfil' %}">{{user}}</a>
                     </li>
+=======
+  <nav class="navbar navbar-dark navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">IS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Unidades Académicos
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Lista</a></li>
+                <li><a class="dropdown-item" href="#">Agregar</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Programas Académicos
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Lista</a></li>
+                <li><a class="dropdown-item" href="#">Agregar</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Institucuiones
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Lista</a></li>
+                <li><a class="dropdown-item" href="#">Agregar</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Reporte Inicial
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'lista_reportesI' %}">Lista</a></li>
+                <li><a class="dropdown-item" href="{% url 'nuevo_reporteI' %}">Agregar</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Reporte Mensual
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'lista_reportesM' %}">Lista</a></li>
+                <li><a class="dropdown-item" href="{% url 'nuevo_reporteM' %}">Agregar</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Alumnos
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href= "{% url 'lista_alumnos' %}">Lista</a></li>
+                <li><a class="dropdown-item" href="{% url 'lista_alumnos' %}">Agregar</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Datos de Alumno
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'lista_datos' %}">Lista</a></li>
+                <li><a class="dropdown-item" href="{% url 'nuevos_datos' %}">Agregar</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link">{{user}}</a>
+            </li>
+>>>>>>> 504d485990cc6f3c2de2b5561d25981a572cf9ed
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
                     </li>
                   </ul>
-                  <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                  </form>
-                </div>
-              </div>
         </nav>
         
         <div class="container">

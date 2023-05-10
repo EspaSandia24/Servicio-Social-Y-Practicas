@@ -6,7 +6,9 @@ from .models import ReporteInicial, ReporteMensual
 from django.urls import reverse_lazy
 from .forms import FormReporteIEditar,FormReporteMEditar
 
-class ListaReportesI(ListView):
+
+class ListaReportesI(LoginRequiredMixin, ListView):
+
     template_name ='reporteinicial_list.html'
     paginate_by = 2
     model = ReporteInicial
@@ -29,8 +31,11 @@ class EditarReporteI(LoginRequiredMixin, UpdateView):
     extra_context = {'accion': 'Editar'}
     success_url = reverse_lazy('lista_reportesI')
     
-class EliminarReporteI(DeleteView):
-    template_name ='reporteinicial_confirm_delete.html'
+
+
+class EliminarReporteI(LoginRequiredMixin, DeleteView):
+    template_name ='reporteinicial_comfirm_delete.html'
+
     model = ReporteInicial
     success_url = reverse_lazy('lista_reportesI')
 
