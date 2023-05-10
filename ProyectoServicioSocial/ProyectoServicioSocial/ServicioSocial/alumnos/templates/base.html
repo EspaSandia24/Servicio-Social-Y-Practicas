@@ -13,41 +13,6 @@
     </title>
 </head>
 <body>
-<<<<<<< HEAD
-        <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">IS</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {% comment %} <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="{% url 'alumnos' %}">Alumnos</a>
-                    </li> {% endcomment %}
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    {% comment %} <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Alumnos
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'lista_alumnos' %}">Lista</a></li>
-                        <li><a class="dropdown-item" href="{% url 'nuevo_alumno' %}">Nuevo</a></li>
-                      </ul>
-                    </li> {% endcomment %}
-                    <li class="nav-item">
-                      {% if request.user.datos.foto %}
-                        <img src="{{MEDIA_URL}}{{request.user.datos.foto}}" alt="{{request.user.first_name}}" width="40" height="40">
-                      {% else %}
-                        <img src="{% static 'img/1024499.jpg' %}" width="40" height="40">
-                      {% endif %}
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'perfil' %}">{{user}}</a>
-                    </li>
-=======
   <nav class="navbar navbar-dark navbar-expand-lg bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">IS</a>
@@ -131,7 +96,6 @@
             <li class="nav-item">
               <a class="nav-link">{{user}}</a>
             </li>
->>>>>>> 504d485990cc6f3c2de2b5561d25981a572cf9ed
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
                     </li>
