@@ -9,6 +9,8 @@ class FormReporteI(forms.ModelForm):
         fields = '__all__'
         
         widgets = {
+            'alumno': forms.Select(
+                attrs={'class':'form-control','placeholder':'Alumno'}),
             'mes1': forms.TextInput(
                 attrs={'class':'form-control','placeholder':'Actividades'}
             ),'mes2': forms.TextInput(
@@ -36,6 +38,9 @@ class FormReporteI(forms.ModelForm):
             ),'tipo': forms.Select(
                 attrs={'class':'form-control','placeholder':'Tipo'}
             ),  
+            'fecha': forms.DateInput(
+                attrs={'class':'form-control','placeholder':'dd/mm/aaaa',"required": True}
+            ),  
         }
 
 class FormReporteIEditar(FormReporteI):
@@ -53,12 +58,11 @@ class FormReporteM(forms.ModelForm):
         fields = '__all__'
         
         widgets = {
-            'Alumno': forms.TextInput(
+            'alumno': forms.Select(
                 attrs={'class':'form-control','placeholder':'Alumno'}
-            ),
-            'actividades': forms.TextInput(
+            ),'actividades': forms.TextInput(
                 attrs={'class':'form-control','placeholder':'Actividades'}
-            ),'horas': forms.TextInput(
+            ),'horas_Reportadas': forms.TextInput(
                 attrs={'class':'form-control','placeholder':'Horas Reportadas'}
             ),'tipo': forms.Select(
                 attrs={'class':'form-control','placeholder':'Tipo'}
@@ -68,8 +72,7 @@ class FormReporteM(forms.ModelForm):
                 attrs={'class':'form-control','placeholder':'DD/MM/AA'}
             ),'fecha': forms.DateInput(
                 attrs={'class':'form-control','placeholder':'DD/MM/AA'}
-            ),
-            
+            ),   
         }
 
 class FormReporteMEditar(FormReporteM):

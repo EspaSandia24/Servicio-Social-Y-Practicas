@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ReporteInicial, ReporteMensual
 from django.urls import reverse_lazy
-from .forms import FormReporteIEditar,FormReporteMEditar
+from .forms import FormReporteIEditar,FormReporteMEditar,FormReporteI,FormReporteM
 
 
 class ListaReportesI(LoginRequiredMixin, ListView):
@@ -16,13 +16,10 @@ class ListaReportesI(LoginRequiredMixin, ListView):
 class NuevoReporteI(LoginRequiredMixin, CreateView):
     template_name ='reporteinicial_form.html'
     model = ReporteInicial
-    #form_class = FormMateria
-    fields = '__all__'
+    form_class = FormReporteI
     success_url = reverse_lazy('lista_reportesI')
     extra_context = {'accion': 'Nuevo'}
-    
-    # template_name = 'alta_materia.html'
-    # fields = ['nombre','clave','semestre']
+ 
     
 class EditarReporteI(LoginRequiredMixin, UpdateView):
     template_name ='reporteinicial_form.html'
@@ -49,7 +46,7 @@ class ListaReportesM(ListView):
 class NuevoReporteM(CreateView):
     template_name ='reportemensual_form.html'
     model = ReporteMensual
-    fields = '__all__'
+    form_class = FormReporteM
     success_url = reverse_lazy('lista_reportesM')
     extra_context = {'accion': 'Nuevo'}
     
