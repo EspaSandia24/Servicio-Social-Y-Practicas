@@ -18,7 +18,7 @@ class FormDatos(forms.ModelForm):
                 attrs={'class':'form-control','placeholder':'dd/mm/aaaa'}
             ),
             'fecha_termino': forms.TextInput(
-                attrs={'class':'form-control','placeholder':'dd/mm/aaaa'}
+                attrs={'class':'form-control','placeholder':'dd/mm/aaaa',"required": False}
             ),
             'kardex' : forms.FileInput(
                 attrs={'class' : 'form-control', 'placeholder' : 'Sólo archivos PDF'}

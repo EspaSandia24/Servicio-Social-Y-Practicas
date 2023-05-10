@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <title>
         {% block titulo %}
-            Alumnos
+            
         {% endblock titulo %}
     </title>
 </head>
@@ -72,24 +72,27 @@
                 <li><a class="dropdown-item" href="{% url 'nuevo_reporteM' %}">Agregar</a></li>
               </ul>
             </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Datos SS
+                Alumnos
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Lista</a></li>
-                <li><a class="dropdown-item" href="#">Agregar</a></li>
+                <li><a class="dropdown-item" href= "{% url 'lista_alumnos' %}">Lista</a></li>
+                <li><a class="dropdown-item" href="{% url 'lista_alumnos' %}">Agregar</a></li>
               </ul>
             </li>
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Datos PP
+                Datos de Alumno
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Lista</a></li>
-                <li><a class="dropdown-item" href="#">Agregar</a></li>
+                <li><a class="dropdown-item" href="{% url 'lista_datos' %}">Lista</a></li>
+                <li><a class="dropdown-item" href="{% url 'nuevos_datos' %}">Agregar</a></li>
               </ul>
             </li>
+            
             <li class="nav-item">
               <a class="nav-link">{{user}}</a>
             </li>
