@@ -6,7 +6,7 @@
     
 {% block contenido %}
     <h1>{{accion}} Datos de Alumnos</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data" class="post-form">
         {% csrf_token %}
         {{form.as_p}}
         <button class="btn btn-primary" type="submit">

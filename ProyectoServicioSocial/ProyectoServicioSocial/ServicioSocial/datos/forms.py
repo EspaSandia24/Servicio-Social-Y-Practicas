@@ -1,6 +1,6 @@
 from django import forms
 from datos.models import Datos
-
+    
 class FormDatos(forms.ModelForm):
     
     class Meta:
@@ -8,12 +8,18 @@ class FormDatos(forms.ModelForm):
         fields = '__all__'
 
 class FormDatos(forms.ModelForm):
-    
-    class Meta:
-        model = Datos
-        fields = '__all__'
         
+    class Meta:
+        model = Datos
+        fields = '__all__'
+        exclude = []
         widgets = {
+            'alumno': forms.Select(
+                attrs={'class':'form-control','placeholder':'Alumno'}
+            ),
+            'tipo': forms.Select(
+                attrs={'class':'form-control','placeholder':'Tipo'}
+            ),
             'fecha_inicio': forms.TextInput(
                 attrs={'class':'form-control','placeholder':'dd/mm/aaaa'}
             ),
@@ -30,15 +36,16 @@ class FormDatos(forms.ModelForm):
                 attrs={'class' : 'form-control', 'placeholder' : 'Sólo archivos PDF'}
             ),
             'carta_liberacion' : forms.FileInput(
-                attrs={'class' : 'form-control', 'placeholder' : 'Sólo archivos PDF'}
+                attrs={'class' : 'form-control', 'placeholder' : 'Sólo archivos PDF',"required": False}
             ),
             #'user': forms.Select(
             #    attrs={'class':'form-control','placeholder':'User'}),
         }
 
+
 class FormDatosEditar(FormDatos):
     class Meta:
-        exclude = ['matricula']
+        exclude = ['alumno']
         model = Datos
 
 class FiltrosDatos(FormDatos):
@@ -48,3 +55,7 @@ class FiltrosDatos(FormDatos):
         
         for field in self.fields:
             self.fields[field].required = False
+
+
+
+

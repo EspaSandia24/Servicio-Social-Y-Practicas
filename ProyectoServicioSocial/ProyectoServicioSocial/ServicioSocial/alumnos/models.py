@@ -8,7 +8,4 @@ class Alumnos(models.Model):
     fecha_nac = models.DateField('Fecha de nacimiento', max_length=10)
     #user = models.ForeignKey("usuarios.Aquí va el modelo", \
     #   verbose_name='Usuarios', on_delete=models.DO_NOTHING)
-
-    def __str__(self):
-        return self.nombre
     

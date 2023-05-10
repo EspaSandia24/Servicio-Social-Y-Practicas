@@ -11,6 +11,7 @@ class DatosList(ListView):
     model = Datos
     extra_context = {'form': FiltrosDatos}
     page_kwarg = 'page'
+    
 
 class NuevosDatos(CreateView):
     template_name = 'datos_form.html'

@@ -16,6 +16,7 @@
         <tr>
             <th>Alumno</th> 
             <th>Institucion</th>
+            <th>Tipo</th>
             <th>Fecha de Inicio</th>
             <th>Fecha de Termino</th>
             <th>Kardex</th>
@@ -27,23 +28,24 @@
     </thead>
     <tbody>
         {% csrf_token %}
-        {% for alumnos in object_list %}
+        {% for datos in object_list %}
         <tr>
-            
-            <td>{{datos.matricula}}</td>
+            <td>{{datos.id}}</td>
+            <td>{{datos.alumno}}</td>
             <td>{{datos.institucion}}</td>
+            <td>{{datos.tipo}}</td>
             <td>{{datos.fecha_inicio}}</td>
             <td>{{datos.fecha_termino}}</td> 
-            <td>{{datos.kardex}}</td>
-            <td>{{datos.constancia_estudios}}</td>
-            <td>{{datos.carta_aceptacion}}</td>
+            <td>{{datos.kardex.url}}</td>
+            <td>{{datos.constancia_estudios.url}}</td>
+            <td>{{datos.carta_aceptacion.url}}</td>
             <td>{{datos.carta_liberacion}}</td>
  
             <td>
-                <a class="btn btn-sm btn-primary" href="{% url 'editar_datos' datos.matricula %}">
+                <a class="btn btn-sm btn-primary" href="{% url 'editar_datos' datos.id %}">
                     Editar
                 </a>
-                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_datos' datos.matricula %}">
+                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_datos' datos.id %}">
                     Eliminar
                 </a>
             </td>
