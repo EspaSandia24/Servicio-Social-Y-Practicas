@@ -54,6 +54,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -116,6 +117,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media/')
+
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('bienvenida')
@@ -124,3 +128,10 @@ LOGIN_REDIRECT_URL = reverse_lazy('bienvenida')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'a.razo509@gmail.com'
+EMAIL_HOST_PASSWORD = 'uxwinvaxqfjptxwf'
+EMAIL_PORT = 587

@@ -37,7 +37,11 @@
                       </ul>
                     </li> {% endcomment %}
                     <li class="nav-item">
-                      <a class="nav-link disabled">Disabled</a>
+                      {% if request.user.datos.foto %}
+                        <img src="{{MEDIA_URL}}{{request.user.datos.foto}}" alt="{{request.user.first_name}}" width="40" height="40">
+                      {% else %}
+                        <img src="{% static 'img/1024499.jpg' %}" width="40" height="40">
+                      {% endif %}
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'perfil' %}">{{user}}</a>
