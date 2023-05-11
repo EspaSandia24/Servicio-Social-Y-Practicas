@@ -125,3 +125,6 @@ def asignar_grupos(request):
     messages.success(request, 'Se agregó el usuario al grupo.')
 
     return redirect('lista')
+
+class Bienvenida(TemplateView):
+    template_name = 'bienvenida.html'

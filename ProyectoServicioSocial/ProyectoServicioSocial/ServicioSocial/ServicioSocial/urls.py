@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from ususarios.views import Bienvenida
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,5 +14,6 @@ urlpatterns = [
     path('alumnos/', include('alumnos.urls')),
     path('reportes_mensuales/', include('reportes.urls_reporteM')),
     path('datos/', include('datos.urls')),
+    path('', Bienvenida.as_view(), name='bienvenida'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -31,7 +31,7 @@ class EditarReporteI(LoginRequiredMixin, UpdateView):
 
 
 class EliminarReporteI(LoginRequiredMixin, DeleteView):
-    template_name ='reporteinicial_comfirm_delete.html'
+    template_name ='reporteinicial_comfirn_delete.html'
 
     model = ReporteInicial
     success_url = reverse_lazy('lista_reportesI')
