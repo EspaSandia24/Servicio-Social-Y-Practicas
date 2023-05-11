@@ -17,7 +17,6 @@ class NuevosDatos(CreateView):
     template_name = 'datos_form.html'
     model = Datos
     form_class = FormDatos
-    # fields = '__all__'
     success_url = reverse_lazy('lista_datos')
     extra_context = {'accion': 'Nuevo'}
     

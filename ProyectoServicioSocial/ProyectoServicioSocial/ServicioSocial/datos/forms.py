@@ -17,6 +17,9 @@ class FormDatos(forms.ModelForm):
             'alumno': forms.Select(
                 attrs={'class':'form-control','placeholder':'Alumno'}
             ),
+            'institucion': forms.Select(
+                attrs={'class':'form-control','placeholder':'Tipo'}
+            ),
             'tipo': forms.Select(
                 attrs={'class':'form-control','placeholder':'Tipo'}
             ),

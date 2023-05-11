@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
     {% block titulo %}
         Datos de Alumnos
@@ -43,13 +43,13 @@
                     </td>         
                     <td>{{datos.institucion}}</td>
                     <td>{{datos.tipo}}</td>
-                    <td>{{datos.fecha_inicio}}</td>
+                    <td style="max-width: 150px; word-wrap: break-word; white-space: normal;">{{datos.fecha_inicio}}</td>
                     {#<td>{{datos.fecha_termino}}</td> #}
-                    <td>
+                    <td style="max-width: 150px; word-wrap: break-word; white-space: normal;">
                         {% if datos.fecha_termino %}
-                            {{ datos.fecha_termino}}
+                            {{ datos.fecha_termino }}
                         {% else %}
-                            No hay fecha de termino (cuando la tenga puede editarla más tarde)
+                            <a style="max-width: 150px; word-wrap: break-word; white-space: normal;">No hay fecha de termino (cuando la tenga puede editarla más tarde)</a>
                         {% endif %}
                     </td>
                     <td style="max-width: 150px; word-wrap: break-word; white-space: normal;">{{datos.kardex.name|slice:"11:"}}</td>
@@ -59,7 +59,7 @@
                         {#<td>{{datos.carta_liberacion}}</td> #}
                     <td style="max-width: 150px; word-wrap: break-word; white-space: normal;">
                         {% if datos.carta_liberacion %}
-                            {{ datos.carta_liberacion.name|slice:"10:"}}
+                            {{ datos.carta_liberacion.name|slice:"11:"}}
                         {% else %}
                             No hay carta de liberación (cuando la tenga puede subirla más tarde)
                         {% endif %}
