@@ -2,9 +2,9 @@ from django.shortcuts import render , redirect
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import ReporteInicial, ReporteMensual
+from .models import ReporteInicial, ReporteMensual, EvaluacionFinal
 from django.urls import reverse_lazy
-from .forms import FormReporteIEditar,FormReporteMEditar,FormReporteI,FormReporteM
+from .forms import FormReporteIEditar,FormReporteMEditar,FormReporteI,FormReporteM,FormEvaluacionFinal
 
 
 class ListaReportesI(LoginRequiredMixin, ListView):
@@ -61,3 +61,28 @@ class EliminarReporteM(DeleteView):
     template_name ='reportemensual_confirm_delete.html'
     model = ReporteMensual
     success_url = reverse_lazy('lista_reportesM')
+
+#-------------------------
+class ListaEvalFin(ListView):
+    template_name ='reporteEvalFinal_list.html'
+    paginate_by = 2
+    model = EvaluacionFinal
+    
+class NuevoEvalFin(CreateView):
+    template_name ='reporteEvalFinal_form.html'
+    model = EvaluacionFinal
+    form_class = FormEvaluacionFinal
+    success_url = reverse_lazy('lista_evaluaciones_finales')
+    extra_context = {'accion': 'Nuevo'}
+    
+class EditarEvalFin(UpdateView):
+    template_name ='reporteEvalFinal_form.html'
+    model = EvaluacionFinal
+    form_class = FormReporteMEditar
+    extra_context = {'accion': 'Editar'}
+    success_url = reverse_lazy('lista_evaluaciones_finales')
+    
+class EliminarEvalFin(DeleteView):
+    template_name ='reporteEvalFin_confirm_delete.html'
+    model = EvaluacionFinal
+    success_url = reverse_lazy('lista_evaluaciones_finales')

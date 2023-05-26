@@ -15,5 +15,6 @@ urlpatterns = [
     path('reportes_mensuales/', include('reportes.urls_reporteM')),
     path('datos/', include('datos.urls')),
     path('', Bienvenida.as_view(), name='bienvenida'),
+    path('reportes_eval_fin/', include('reportes.urls_reporteEvalFinal')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

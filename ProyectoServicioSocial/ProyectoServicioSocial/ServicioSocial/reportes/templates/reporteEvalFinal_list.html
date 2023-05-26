@@ -1,0 +1,95 @@
+{% extends 'index3.html' %}
+{% block titulo %}
+    Lista de Evaluaciones Finales
+{% endblock titulo %}
+
+{% block contenido %}
+<h1>Lista de Evaluaciones Finales</h1>
+
+<form method="GET" id="form">
+    <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+</form>
+
+<a class="btn btn-lg btn-outline-success" href="{% url 'nuevo_evaluacion_final' %}">
+    Nuevo
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Alumno</th>
+            <th>Fecha inicio</th>
+            <th>Fecha termino</th>
+            <th>Institución</th>
+            <th>Puntualidad</th>
+            <th>Cumplimiento de actividades</th>
+            <th>Actividades ordenadas</th>
+            <th>Conocimientos suficientes</th>
+            <th>Comportamiento</th>
+            <th>Actitud</th>
+            <th>Actitud ante actividad desconocida</th>
+            <th>Calificación</th>
+            <th>Observaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% csrf_token %}
+        {% for evaluacion in object_list %}
+        <tr>
+            <td>{{ evaluacion.alumno }}</td>
+            <td>{{ evaluacion.fecha_inicio }}</td>
+            <td>{{ evaluacion.fecha_termino }}</td>
+            <td>{{ evaluacion.institucion }}</td>
+            <td>{{ evaluacion.puntualidad }}</td>
+            <td>{{ evaluacion.cumplimiento_actividades }}</td>
+            <td>{{ evaluacion.actividades_ordenadas }}</td>
+            <td>{{ evaluacion.conocimientos_suficientes }}</td>
+            <td>{{ evaluacion.comportamiento }}</td>
+            <td>{{ evaluacion.actitud }}</td>
+            <td>{{ evaluacion.actitud_actividad_desconocida }}</td>
+            <td>{{ evaluacion.calificacion }}</td>
+            <td>{{ evaluacion.observaciones }}</td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="{% url 'editar_evaluacion_final' evaluacion.id %}">
+                    Editar
+                </a>
+                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_evaluacion_final' evaluacion.id %}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="javascript:enviar(1);">&laquo; first</a>
+            <a href="javascript:enviar({{ page_obj.previous_page_number }});">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="javascript:enviar({{ page_obj.next_page_number }});">next</a>
+            <a href="javascript:enviar({{ page_obj.paginator.num_pages }});">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock contenido %}
+
+{% block scripts %}
+    <script>
+        function enviar(page){
+            $("#page").val(page);
+            $("#form").submit();
+        }
+    </script>
+{% endblock scripts %}

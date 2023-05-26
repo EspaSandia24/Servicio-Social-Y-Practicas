@@ -1,5 +1,5 @@
 from django import forms
-from .models import ReporteInicial, TIPO, ReporteMensual
+from .models import ReporteInicial, TIPO, ReporteMensual, EvaluacionFinal
 
 class FormReporteI(forms.ModelForm):
     
@@ -79,3 +79,58 @@ class FormReporteMEditar(FormReporteM):
     class Meta:
         exclude = ['id']
         model = ReporteMensual
+
+#-------------------------------
+
+class FormEvaluacionFinal(forms.ModelForm):
+    
+    class Meta:
+        model = EvaluacionFinal
+        fields = '__all__'
+        
+        widgets = {
+            'alumno': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Alumno'}
+            ),
+            'fecha_inicio': forms.DateInput(
+                attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}
+            ),
+            'fecha_termino': forms.DateInput(
+                attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}
+            ),
+            'institucion': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Institución'}
+            ),
+            'puntualidad': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Puntuación para la puntualidad'}
+            ),
+            'cumplimiento_actividades': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Puntuación para el cumplimiento de actividades'}
+            ),
+            'actividades_ordenadas': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Puntuación para la realización ordenada de actividades'}
+            ),
+            'conocimientos_suficientes': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Puntuación para los conocimientos suficientes'}
+            ),
+            'comportamiento': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Puntuación para el comportamiento'}
+            ),
+            'actitud': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Puntuación para la actitud'}
+            ),
+            'actitud_actividad_desconocida': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Actitud ante una actividad desconocida'}
+            ),
+            'calificacion': forms.NumberInput(
+                attrs={'class': 'form-control', 'placeholder': 'Calificación'}
+            ),
+            'observaciones': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Observaciones'}
+            ),
+        }
+
+class FormEvaluacionFinalEditar(FormEvaluacionFinal):
+    class Meta:
+        exclude = ['id']
+        model = EvaluacionFinal
