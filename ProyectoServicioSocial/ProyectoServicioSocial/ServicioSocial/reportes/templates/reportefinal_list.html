@@ -1,16 +1,16 @@
 {% extends 'index3.html' %}
 {% block titulo %}
-    Lista de Reportes Iniciales
+    Lista de Reportes Finales
 {% endblock titulo %}
 
 {% block contenido %}
-<h1>Lista de Reportes Iniciales</h1>
+<h1>Lista de Reportes Finales</h1>
 
 <form method="GET" id="form">
     <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
 </form>
 
-<a class="btn btn-lg btn-outline-success" href="{% url 'nuevo_reporteI' %}">
+<a class="btn btn-lg btn-outline-success" href="{% url 'nuevo_reporteF' %}">
     Nuevo
 </a>
 
@@ -20,7 +20,12 @@
             
             <th>Alumno</th>
             <th>Tipo</th>
-            <th>Fecha</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Termino</th>
+            <th>Horas Acumuladas</th>
+
+
+
             
 
         </tr>
@@ -32,12 +37,16 @@
             
             <td>{{inicial.alumno}}</td>
             <td>{{inicial.tipo}}</td>
-            <td>{{inicial.fecha}}</td>
+            <td>{{inicial.fecha_inicio}}</td>
+            <td>{{inicial.fecha_termino}}</td>
+            <td>{{inicial.horas_Acumuladas}}</td>
+
+
             <td>
-                <a class="btn btn-sm btn-primary" href="{% url 'editar_reporteI' inicial.id %}">
+                <a class="btn btn-sm btn-primary" href="{% url 'editar_reporteF' inicial.id %}">
                     Editar
                 </a>
-                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_reporteI' inicial.id %}">
+                <a class="btn btn-sm btn-danger" href="{% url 'eliminar_reporteF' inicial.id %}">
                     Eliminar
                 </a>
             </td>

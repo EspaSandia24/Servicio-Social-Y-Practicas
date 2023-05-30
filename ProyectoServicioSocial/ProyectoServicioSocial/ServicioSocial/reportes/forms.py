@@ -1,5 +1,5 @@
 from django import forms
-from .models import ReporteInicial, TIPO, ReporteMensual, EvaluacionFinal
+from .models import ReporteInicial, TIPO, ReporteMensual, EvaluacionFinal, Reporte_Final
 
 class FormReporteI(forms.ModelForm):
     
@@ -129,8 +129,61 @@ class FormEvaluacionFinal(forms.ModelForm):
                 attrs={'class': 'form-control', 'placeholder': 'Observaciones'}
             ),
         }
-
 class FormEvaluacionFinalEditar(FormEvaluacionFinal):
     class Meta:
         exclude = ['id']
         model = EvaluacionFinal
+#-----------------------------------------------
+
+
+class FromReporteFinal(forms.ModelForm):
+    
+    class Meta:
+        model = Reporte_Final
+        fields = '__all__'
+        
+        widgets = {
+            'alumno': forms.Select(
+                attrs={'class':'form-control','placeholder':'Alumno'}),
+            'fecha_inicio': forms.DateInput(
+                attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}
+            ),
+            'fecha_termino': forms.DateInput(
+                attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}
+            ),
+            'horas_Reportadas': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Horas Reportadas'}
+            ),
+            'mes1': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades'}
+            ),'mes2': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades'}
+            ),'mes3': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades'}
+            ),'mes4': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades'}
+            ),'mes5': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades'}
+            ),'mes6': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades',"required": False}
+            ),'mes7': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades',"required": False}
+            ),'mes8': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades',"required": False}
+            ),'mes9': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades',"required": False}
+            ),'mes10': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades',"required": False}
+            ),'mes11': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades',"required": False}
+            ),'mes12': forms.TextInput(
+                attrs={'class':'form-control','placeholder':'Actividades',"required": False}
+            ),'tipo': forms.Select(
+                attrs={'class':'form-control','placeholder':'Tipo'}
+            ) 
+        }
+
+class FormReporteFEditar(FromReporteFinal):
+    class Meta:
+        exclude = ['id']
+        model = Reporte_Final

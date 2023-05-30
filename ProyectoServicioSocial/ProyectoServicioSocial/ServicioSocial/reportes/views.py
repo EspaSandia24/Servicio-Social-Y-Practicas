@@ -2,15 +2,14 @@ from django.shortcuts import render , redirect
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import ReporteInicial, ReporteMensual, EvaluacionFinal
+from .models import ReporteInicial, ReporteMensual, EvaluacionFinal, Reporte_Final
 from django.urls import reverse_lazy
-from .forms import FormReporteIEditar,FormReporteMEditar,FormReporteI,FormReporteM,FormEvaluacionFinal
+from .forms import FormReporteIEditar,FormReporteMEditar,FormReporteI,FormReporteM,FormEvaluacionFinal, FromReporteFinal,FormReporteFEditar
 
 
 class ListaReportesI(LoginRequiredMixin, ListView):
 
     template_name ='reporteinicial_list.html'
-    paginate_by = 2
     model = ReporteInicial
     
 class NuevoReporteI(LoginRequiredMixin, CreateView):
@@ -31,7 +30,7 @@ class EditarReporteI(LoginRequiredMixin, UpdateView):
 
 
 class EliminarReporteI(LoginRequiredMixin, DeleteView):
-    template_name ='reporteinicial_comfirn_delete.html'
+    template_name ='reporteinicial_confirm_delete.html'
 
     model = ReporteInicial
     success_url = reverse_lazy('lista_reportesI')
@@ -86,3 +85,31 @@ class EliminarEvalFin(DeleteView):
     template_name ='reporteEvalFin_confirm_delete.html'
     model = EvaluacionFinal
     success_url = reverse_lazy('lista_evaluaciones_finales')
+    
+#-------------------------------------------------
+class ListaReportesF(LoginRequiredMixin, ListView):
+
+    template_name ='reportefinal_list.html'
+    model = Reporte_Final
+    
+class NuevoReporteF(LoginRequiredMixin, CreateView):
+    template_name ='reportefinal_form.html'
+    model = Reporte_Final
+    form_class = FromReporteFinal
+    success_url = reverse_lazy('lista_reportesF')
+    extra_context = {'accion': 'Nuevo'}
+ 
+    
+class EditarReporteF(LoginRequiredMixin, UpdateView):
+    template_name ='reportefinal_form.html'
+    model = Reporte_Final
+    form_class = FormReporteFEditar
+    extra_context = {'accion': 'Editar'}
+    success_url = reverse_lazy('lista_reportesF')
+    
+
+
+class EliminarReporteF(LoginRequiredMixin, DeleteView):
+    template_name ='reportefinal_confirm_delete.html'
+    model = Reporte_Final
+    success_url = reverse_lazy('lista_reportesF')
