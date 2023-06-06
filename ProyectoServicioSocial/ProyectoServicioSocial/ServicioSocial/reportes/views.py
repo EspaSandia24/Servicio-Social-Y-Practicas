@@ -3,6 +3,8 @@ from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ReporteInicial, ReporteMensual, EvaluacionFinal, Reporte_Final
+from instituciones.models import ProgramaAcademico
+from alumnos.models import Alumnos
 from django.urls import reverse_lazy
 from .forms import FormReporteIEditar,FormReporteMEditar,FormReporteI,FormReporteM,FormEvaluacionFinal, FromReporteFinal,FormReporteFEditar
 
@@ -113,3 +115,25 @@ class EliminarReporteF(LoginRequiredMixin, DeleteView):
     template_name ='reportefinal_confirm_delete.html'
     model = Reporte_Final
     success_url = reverse_lazy('lista_reportesF')
+
+#-------------------------grafica
+import json
+from django.shortcuts import render
+from .models import Alumnos
+from instituciones.models import ProgramaAcademico
+
+def grafica_alumnos(request):
+    programas_academicos = ProgramaAcademico.objects.all()
+    datos_grafica = []
+    
+    for programa in programas_academicos:
+        cantidad_alumnos = Alumnos.objects.filter(programa_academico=programa).count()
+        datos_grafica.append({
+            'programa': programa.nombre,
+            'alumnos': cantidad_alumnos
+        })
+    
+    datos_grafica_json = json.dumps(datos_grafica)  # Convertir a JSON
+    
+    return render(request, 'grafica.html', {'datos_grafica': datos_grafica_json})
+

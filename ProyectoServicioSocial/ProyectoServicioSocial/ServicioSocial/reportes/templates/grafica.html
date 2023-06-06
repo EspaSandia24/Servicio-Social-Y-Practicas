@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+{% extends 'index3.html' %}
+
+{% block titulo %}
+    Gráfica
+{% endblock titulo %}
+
+{% block contenido %}
+
+
+<html>
+<head>
+  <title>Grafica Alumnos por Programa</title>
+  <!-- Agrega los enlaces a los archivos CSS y JS de Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="grafica"></canvas>
+
+  <script>
+    // Obtén los datos de la vista
+    var datos_grafica = {{ datos_grafica|safe }};
+
+
+    // Crea un arreglo de etiquetas y un arreglo de datos
+    var etiquetas = [];
+    var datos = [];
+
+    datos_grafica.forEach(function(item) {
+      etiquetas.push(item.programa);
+      datos.push(item.alumnos);
+    });
+
+    // Crea la gráfica utilizando Chart.js
+    var ctx = document.getElementById('grafica').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: etiquetas,
+        datasets: [{
+          label: 'Alumnos por Programa',
+          data: datos,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            stepSize: 1
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+{% endblock contenido %}

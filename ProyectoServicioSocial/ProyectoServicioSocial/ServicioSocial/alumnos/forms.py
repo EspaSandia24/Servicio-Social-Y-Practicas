@@ -32,6 +32,9 @@ class FormAlumnos(forms.ModelForm):
             'fecha_nac': forms.TextInput(
                 attrs={'class':'form-control','placeholder':'dd/mm/aaaa'}
             ),
+            'programa': forms.Select(
+                attrs={'class': 'form-control', 'placeholder': 'Programa'}
+            ),
             #'user': forms.Select(
             #    attrs={'class':'form-control','placeholder':'User'}),
         }

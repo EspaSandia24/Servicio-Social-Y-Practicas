@@ -20,6 +20,7 @@
             <th>Apellido paterno</th>
             <th>Apellido Materno</th>
             <th>Fecha de nacimiento</th>
+            <th>Programa Acaemico</th>
             {# <th>User</th> #}
 
         </tr>
@@ -34,6 +35,7 @@
             <td>{{alumnos.ap_paterno}}</td>
             <td>{{alumnos.ap_materno}}</td>
             <td>{{alumnos.fecha_nac}}</td>
+            <td>{{alumnos.programa_academico}}</td>
             {# <td>{{alumnos.user}}</td> #}
             <td>
                 <a class="btn btn-sm btn-primary" href="{% url 'editar_alumno' alumnos.matricula %}">
