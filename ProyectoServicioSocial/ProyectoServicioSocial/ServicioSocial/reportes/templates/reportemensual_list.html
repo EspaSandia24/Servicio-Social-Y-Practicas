@@ -23,6 +23,7 @@
             <th>horas Reportadas</th>
             <th>Fecha inicio</th>
             <th>Fecha termino</th>
+            <th>Acciones</th>
 
             
 
@@ -44,6 +45,9 @@
                 </a>
                 <a class="btn btn-sm btn-danger" href="{% url 'eliminar_reporteM' menusal.id %}">
                     Eliminar
+                </a>
+                </a><a class="btn btn-sm btn-success" href="{% url 'pdf_mensual' %}">
+                    Generar PDF
                 </a>
             </td>
         </tr>

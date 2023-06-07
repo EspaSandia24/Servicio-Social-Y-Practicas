@@ -6,4 +6,5 @@ urlpatterns = [
     path('nuevoM', views.NuevoReporteM.as_view(), name='nuevo_reporteM'),
     path('editarM/<str:pk>', views.EditarReporteM.as_view(), name='editar_reporteM'),
     path('eliminarM/<str:pk>', views.EliminarReporteM.as_view(), name='eliminar_reporteM'),
+    path('pdfMensual', views.GenerarPdfMensual.as_view(), name='pdf_mensual'),
 ]

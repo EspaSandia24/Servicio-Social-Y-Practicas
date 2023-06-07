@@ -21,6 +21,7 @@
             <th>Alumno</th>
             <th>Tipo</th>
             <th>Fecha</th>
+            <th>Acciones</th>
             
 
         </tr>
@@ -39,6 +40,8 @@
                 </a>
                 <a class="btn btn-sm btn-danger" href="{% url 'eliminar_reporteI' inicial.id %}">
                     Eliminar
+                </a><a class="btn btn-sm btn-success" href="{% url 'pdf_inicial' %}">
+                    Generar PDF
                 </a>
             </td>
         </tr>
