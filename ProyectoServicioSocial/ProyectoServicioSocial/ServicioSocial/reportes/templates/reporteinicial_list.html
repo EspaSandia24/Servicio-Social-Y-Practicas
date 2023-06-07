@@ -40,7 +40,7 @@
                 </a>
                 <a class="btn btn-sm btn-danger" href="{% url 'eliminar_reporteI' inicial.id %}">
                     Eliminar
-                </a><a class="btn btn-sm btn-success" href="{% url 'pdf_inicial' %}">
+                </a><a class="btn btn-sm btn-success" target="_blank" href="{% url 'pdf_inicial' inicial.id %}">
                     Generar PDF
                 </a>
             </td>

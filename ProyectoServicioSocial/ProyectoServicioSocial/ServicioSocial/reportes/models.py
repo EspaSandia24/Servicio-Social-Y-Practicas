@@ -39,7 +39,10 @@ class ReporteInicial(models.Model):
     mes11 = models.CharField( max_length=300)
     mes12 = models.CharField( max_length=300)
     fecha = models.DateField('Fecha De Inicio', max_length=10)
-    
+
+    def __str__(self):
+        return self.mes1
+
 class ReporteMensual(models.Model):
     alumno = models.ForeignKey("alumnos.Alumnos", verbose_name='Alumno', on_delete=models.DO_NOTHING)
     tipo = models.CharField(max_length=2, choices=TIPO)

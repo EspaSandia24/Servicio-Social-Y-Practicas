@@ -1,5 +1,6 @@
+import os
 from django.shortcuts import render , redirect
-from django.views.generic import ListView, TemplateView, View
+from django.views.generic import ListView, TemplateView, View, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ReporteInicial, ReporteMensual, EvaluacionFinal, Reporte_Final
@@ -9,7 +10,6 @@ from django.urls import reverse_lazy
 from .forms import FormReporteIEditar,FormReporteMEditar,FormReporteI,FormReporteM,FormEvaluacionFinal, FromReporteFinal,FormReporteFEditar
 from django.http import HttpResponse
 from reportes.utils import render_to_pdf
-
 
 class ListaReportesI(LoginRequiredMixin, ListView):
 
@@ -32,7 +32,6 @@ class EditarReporteI(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('lista_reportesI')
     
 
-
 class EliminarReporteI(LoginRequiredMixin, DeleteView):
     template_name ='reporteinicial_confirm_delete.html'
 
@@ -42,20 +41,13 @@ class EliminarReporteI(LoginRequiredMixin, DeleteView):
 
 class GenerarPdfInicial(View):
     def get(self, request, *args, **kwargs):
-        model = ReporteInicial
-        # reportes = ReporteInicial.objects.all()
-        data = {
-            'alumno' : model.alumno,
-            'mes1' : model.mes1,
-            'mes2' : model.mes2,
-            'mes3' : model.mes3,
-            'mes4' : model.mes4,
-            'mes5' : model.mes5,
-            'mes6' : model.mes6,
-            'mes7' : model.mes7,
-            'mes8' : model.mes8,
-        }
-        pdf = render_to_pdf('generarPdfInicial.html', data)
+        reportes = ReporteInicial.objects.all()
+        for reporte in reportes:
+            data = {
+                'reporte': reporte
+            }
+            pdf = render_to_pdf('generarPdfInicial.html', data)
+
         return HttpResponse(pdf, content_type='application/pdf')
 
 #----------------------------------------------------------
@@ -86,13 +78,13 @@ class EliminarReporteM(DeleteView):
 
 class GenerarPdfMensual(View):
     def get(self, request, *args, **kwargs):
-        model = ReporteMensual
-        # reportes = ReporteInicial.objects.all()
-        data = {
-            'alumno' : model.alumno,
-            'tipo' : model.tipo,
-        }
-        pdf = render_to_pdf('generarPdfMensual.html', data)
+        reportes = ReporteMensual.objects.all()
+        for reporte in reportes:
+            data = {
+                'reporte': reporte
+            }
+            pdf = render_to_pdf('generarPdfMensual.html', data)
+        
         return HttpResponse(pdf, content_type='application/pdf')
 
 #-------------------------
@@ -150,12 +142,13 @@ class EliminarReporteF(LoginRequiredMixin, DeleteView):
 
 class GenerarPdfFinal(View):
     def get(self, request, *args, **kwargs):
-        model = Reporte_Final
-        # reportes = ReporteInicial.objects.all()
-        data = {
-            'alumno' : model.alumno,
-        }
-        pdf = render_to_pdf('generarPdfFinal.html', data)
+        reportes = Reporte_Final.objects.all()
+        for reporte in reportes:
+            data = {
+                'reporte': reporte
+            }
+            pdf = render_to_pdf('generarPdfFinal.html', data)
+
         return HttpResponse(pdf, content_type='application/pdf')
 
 #-------------------------grafica

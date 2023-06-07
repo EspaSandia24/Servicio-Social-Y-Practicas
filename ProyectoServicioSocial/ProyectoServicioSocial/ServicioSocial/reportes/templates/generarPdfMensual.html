@@ -9,22 +9,23 @@
 <body>
     <h2>ASUNTO: Reporte mensual de actividades</h2>
 
-    <h2>Nombre del Prestador (a): <br>
-    Periodo reportado:	<br>	
-    Horas reportadas:<br>	
-    Lugar donde presta el Servicio:	<br>
-    Semestre actual:	<br>
-    Programa Académico:	<br>	
+    <h2>Matricula del Prestador (a): {{reporte.alumno}}<br>
+    Periodo reportado: {{reporte.fecha_inicio}} / {{reporte.fecha_termino}}<br>	
+    Horas reportadas: {{reporte.horas_Reportadas}}<br>	
+    Lugar donde presta el Servicio: {{reporte.institucion.nombre}}	<br>
+    Semestre actual: <br>
+    Programa Académico:	{{reporte.alumno.programa_academico}} <br>	
     Nombre del Proyecto:	<br>
-
+    <br>
     Dra. Diana Isabel Ortiz Esquivel<br>
     Responsable del  Departamento de <br>
     Servicio Social y Vinculación de la<br>
     Unidad Académica de Ingeniería Eléctrica<br>
     P r e s e n t e</h2>
 
+    <h2>Actividades</h2>
 
-
+    {{reporte.actividades}}
 
 
 </body>

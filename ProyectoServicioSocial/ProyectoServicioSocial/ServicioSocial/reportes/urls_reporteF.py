@@ -6,5 +6,5 @@ urlpatterns = [
     path('nuevoF', views.NuevoReporteF.as_view(), name='nuevo_reporteF'),
     path('editarF/<str:pk>', views.EditarReporteF.as_view(), name='editar_reporteF'),
     path('eliminarF/<str:pk>', views.EliminarReporteF.as_view(), name='eliminar_reporteF'),
-    path('pdfFinal', views.GenerarPdfFinal.as_view(), name='pdf_final'),
+    path('pdfFinal/<int:pk>', views.GenerarPdfFinal.as_view(), name='pdf_final'),
 ]
