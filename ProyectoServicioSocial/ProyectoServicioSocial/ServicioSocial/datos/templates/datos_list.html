@@ -16,6 +16,7 @@
             <tr>
                 {#<th>ID</th> #}
                 <th>Matricula</th> 
+                <th>Unidad</th>
                 <th>Institucion</th>
                 <th>Tipo</th>
                 <th>Fecha de Inicio</th>
@@ -40,7 +41,8 @@
                                 {% endif %}
                             {% endfor %}
                         {% endwith %}
-                    </td>         
+                    </td>  
+                    <td>{{datos.unidad}}</td>       
                     <td>{{datos.institucion}}</td>
                     <td>{{datos.tipo}}</td>
                     <td style="max-width: 150px; word-wrap: break-word; white-space: normal;">{{datos.fecha_inicio}}</td>

@@ -1,0 +1,94 @@
+{% extends 'index3.html' %}
+
+    {% block titulo %}
+        Lista de Asesores
+    {% endblock titulo %}
+            
+    {% block contenido %}
+    <h1> Datos de Asesores</h1>
+            
+    <form method="GET" id="form">
+        <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+    </form>
+            
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre(s)</th>
+                <th>Apellido paterno</th>
+                <th>Apellido Materno</th>
+                <th>Institucion</th>
+                <th>Puesto</th>
+                {#<th>User</th>#}
+                <th>Teléfono</th>
+                <th>No. Serie</th>
+                <th>Certificado</th>
+                <th>Contraseña de Certificado</th>
+                <th>Tipo</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            {% csrf_token %}
+            {% for datos in object_list %}
+                <tr>
+                    <td>{{asesores.id}}</td>
+                    <td>{{asesores.nombre}}</td>
+                    <td>{{asesores.ap_paterno}}</td>
+                    <td>{{asesores.ap_materno}}</td>
+                    <td>{{asesores.institucion}}</td>
+                    <td>{{asesores.puesto}}</td>
+                    {# <td>{{asesores.user}}</td> #}
+                    <td>{{asesores.telefono}}</td>
+                    <td>{{asesores.no_serie}}</td>
+                    <td>{{asesores.certificado}}</td>
+                    <td>{{asesores.contrasena_cert}}</td>
+                    <td>{{asesores.tipo}}</td>
+             
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="{% url 'editar_asesor' datos.id %}">
+                            Editar
+                        </a>
+                        <a class="btn btn-sm btn-danger" href="{% url 'eliminar_asesor' datos.id %}">
+                             Eliminar
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+            
+    <a class="btn btn-lg btn-outline-success" href="{% url 'nuevo_asesor' %}">
+        Nuevo
+    </a>
+            
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="javascript:enviar(1);">&laquo; first</a>
+                <a href="javascript:enviar({{ page_obj.previous_page_number }});">previous</a>
+            {% endif %}
+            
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+            
+            {% if page_obj.has_next %}
+                <a href="javascript:enviar({{ page_obj.next_page_number }});">next</a>
+                <a href="javascript:enviar({{ page_obj.paginator.num_pages }});">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+            
+    {% endblock contenido %}
+            
+    {% block scripts %}
+    <script>
+        function enviar(page){
+            $("#page").val(page);
+            $("#form").submit();
+        }
+    </script>
+{% endblock scripts %}

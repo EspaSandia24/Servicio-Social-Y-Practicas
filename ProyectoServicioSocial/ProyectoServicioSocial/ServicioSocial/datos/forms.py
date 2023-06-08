@@ -17,8 +17,11 @@ class FormDatos(forms.ModelForm):
             'alumno': forms.Select(
                 attrs={'class':'form-control','placeholder':'Alumno'}
             ),
+            'unidad': forms.Select(
+                attrs={'class':'form-control','placeholder':'Institución'}
+            ),
             'institucion': forms.Select(
-                attrs={'class':'form-control','placeholder':'Tipo'}
+                attrs={'class':'form-control','placeholder':'Institución'}
             ),
             'tipo': forms.Select(
                 attrs={'class':'form-control','placeholder':'Tipo'}

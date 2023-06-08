@@ -1,0 +1,21 @@
+{% extends 'index3.html' %}
+
+{% block titulo %}
+    {{accion}} Asesores
+{% endblock titulo %}
+    
+{% block contenido %}
+    <h1>{{accion}} Asesores</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary" type="submit">
+           {% if accion == 'Nuevo' %}
+                Agregar
+            {% else %}
+                Guardar
+           {% endif %} 
+        </button>
+    </form>
+
+{% endblock contenido %}

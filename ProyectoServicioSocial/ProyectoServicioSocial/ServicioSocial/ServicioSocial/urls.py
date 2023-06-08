@@ -18,6 +18,7 @@ urlpatterns = [
     path('reportes_eval_fin/', include('reportes.urls_reporteEvalFinal')),
     path('reportes_finales/', include('reportes.urls_reporteF')),
     path('grafica/', include('reportes.urls_graficas')),
+    path('asesores/', include('asesores.urls')),
     
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
