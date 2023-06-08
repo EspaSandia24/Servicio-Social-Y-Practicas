@@ -53,7 +53,7 @@ class FormAsesores(forms.ModelForm):
 
 class FormAsesoresEditar(FormAsesores):
     class Meta:
-        exclude = ['matricula']
+        exclude = ['id']
         model = Asesores
 
 class FiltrosAsesores(FormAsesores):
