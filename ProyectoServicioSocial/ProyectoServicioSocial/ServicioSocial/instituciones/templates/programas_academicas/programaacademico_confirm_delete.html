@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'index3.html' %}
 
 {% block titulo %}
 Eliminar programa
@@ -10,6 +10,6 @@ Eliminar programa
         <p>¿Estás seguro de querer eliminar el programa {{object.nombre}}?</p>
         {{form}}
         <button  class="btn btn-danger" type="submit">Eliminar</button>
-        <a class="btn btn-warning" href="{% url 'lista_materias' %}">Cancelar</a>
+        <a class="btn btn-warning" href="{% url 'lista_programas' %}">Cancelar</a>
     </form>
 {% endblock contenido %}

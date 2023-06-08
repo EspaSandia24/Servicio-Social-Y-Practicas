@@ -11,14 +11,12 @@ class AsesoresList(LoginRequiredMixin, ListView):
     template_name = 'asesores_list.html'
     paginate_by = 3
     model = Asesores
-    extra_context = {'form': FiltrosAsesores}
     page_kwarg = 'page'
 
 class NuevoAsesor(LoginRequiredMixin, CreateView):
     template_name = 'asesores_form.html'
     model = Asesores
     form_class = FormAsesores
-    # fields = '__all__'
     success_url = reverse_lazy('lista_asesores')
     extra_context = {'accion': 'Nuevo'}
     

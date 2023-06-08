@@ -30,14 +30,13 @@
         </thead>
         <tbody>
             {% csrf_token %}
-            {% for datos in object_list %}
+            {% for asesores in object_list %}
                 <tr>
                     <td>{{asesores.nombre}}</td>
                     <td>{{asesores.ap_paterno}}</td>
                     <td>{{asesores.ap_materno}}</td>
                     <td>{{asesores.institucion}}</td>
                     <td>{{asesores.puesto}}</td>
-                    {# <td>{{asesores.user}}</td> #}
                     <td>{{asesores.telefono}}</td>
                     <td>{{asesores.no_serie}}</td>
                     <td>{{asesores.certificado}}</td>

@@ -1,14 +1,6 @@
 from django import forms
 from asesores.models import Asesores
 
-class FormAsesores(forms.ModelForm):
-    
-    class Meta:
-        model = Asesores
-        fields = '__all__'
-        # fields = ['matricula, nombre']
-
-
 
 class FormAsesores(forms.ModelForm):
     

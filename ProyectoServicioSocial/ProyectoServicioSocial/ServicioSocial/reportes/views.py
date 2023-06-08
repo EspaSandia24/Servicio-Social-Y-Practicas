@@ -108,7 +108,7 @@ class EditarEvalFin(UpdateView):
     success_url = reverse_lazy('lista_evaluaciones_finales')
     
 class EliminarEvalFin(DeleteView):
-    template_name ='reporteEvalFin_confirm_delete.html'
+    template_name ='reporteEvalFinal_confirm_delete.html'
     model = EvaluacionFinal
     success_url = reverse_lazy('lista_evaluaciones_finales')
     
