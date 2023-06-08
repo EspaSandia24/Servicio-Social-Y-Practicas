@@ -17,9 +17,6 @@ class FormAsesores(forms.ModelForm):
         fields = '__all__'
         
         widgets = {
-            'id': forms.TextInput(
-                attrs={'class':'form-control','placeholder':'ID'}
-            ),
             'nombre': forms.TextInput(
                 attrs={'class':'form-control','placeholder':'Nombre(s)'}
             ),

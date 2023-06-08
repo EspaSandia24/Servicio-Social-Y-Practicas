@@ -7,7 +7,6 @@ TIPO=[
 ]
 
 class Asesores(models.Model):
-    id = models.BigAutoField('ID', primary_key=True)
     nombre = models.CharField('Nombre', max_length=50)
     ap_paterno = models.CharField('Apellido paterno', max_length=20)
     ap_materno = models.CharField('Apellido materno', max_length=20)

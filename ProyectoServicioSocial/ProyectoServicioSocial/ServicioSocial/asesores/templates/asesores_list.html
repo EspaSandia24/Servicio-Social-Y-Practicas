@@ -14,7 +14,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre(s)</th>
                 <th>Apellido paterno</th>
                 <th>Apellido Materno</th>
@@ -33,7 +32,6 @@
             {% csrf_token %}
             {% for datos in object_list %}
                 <tr>
-                    <td>{{asesores.id}}</td>
                     <td>{{asesores.nombre}}</td>
                     <td>{{asesores.ap_paterno}}</td>
                     <td>{{asesores.ap_materno}}</td>
@@ -47,10 +45,10 @@
                     <td>{{asesores.tipo}}</td>
              
                     <td>
-                        <a class="btn btn-sm btn-primary" href="{% url 'editar_asesor' datos.id %}">
+                        <a class="btn btn-sm btn-primary" href="{% url 'editar_asesor' asesores.id %}">
                             Editar
                         </a>
-                        <a class="btn btn-sm btn-danger" href="{% url 'eliminar_asesor' datos.id %}">
+                        <a class="btn btn-sm btn-danger" href="{% url 'eliminar_asesor' asesores.id %}">
                              Eliminar
                         </a>
                     </td>
