@@ -19,3 +19,6 @@ class Asesores(models.Model):
     certificado = models.CharField('Certificado', max_length=3000)
     contrasena_cert = models.CharField('Contraseña de Certificado', max_length=20)
     tipo = models.CharField(max_length=3, choices=TIPO)
+    
+    def __str__(self):
+        return self.nombre

@@ -91,3 +91,14 @@ class Reporte_Final(models.Model):
     mes10 = models.CharField( max_length=300)
     mes11 = models.CharField( max_length=300)
     mes12 = models.CharField( max_length=300)
+    
+
+class AlumnoAsesor(models.Model):
+    alumno= models.ForeignKey("alumnos.Alumnos", verbose_name="Alumno", \
+        on_delete=models.CASCADE, related_name='Alumno')
+    asesor = models.ForeignKey("asesores.Asesores", \
+        verbose_name="Asesor", on_delete=models.CASCADE, related_name='Asesor')
+
+    def __str__(self):
+        return f"{self.alumno}-{self.asesor}"
+    

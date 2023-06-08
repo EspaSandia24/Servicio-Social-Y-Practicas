@@ -187,3 +187,5 @@ class FormReporteFEditar(FromReporteFinal):
     class Meta:
         exclude = ['id']
         model = Reporte_Final
+        
+#-----------------------------------------
